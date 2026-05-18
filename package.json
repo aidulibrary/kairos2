@@ -4,15 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prisma:seed": "npx tsx prisma/seed.ts"
+    "pages:build": "npx @cloudflare/next-on-pages",
+    "pages:preview": "npx @cloudflare/next-on-pages preview",
+    "pages:deploy": "npx @cloudflare/next-on-pages && npx wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
     "@ai-sdk/deepseek": "^1",
     "@ai-sdk/react": "^3.0.186",
-    "@prisma/client": "^6",
     "ai": "^5.0.188",
     "clsx": "^2",
     "konva": "^9",
@@ -27,16 +28,16 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/uuid": "^10",
-    "better-sqlite3": "^11",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
-    "prisma": "^6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4"
   }
 }

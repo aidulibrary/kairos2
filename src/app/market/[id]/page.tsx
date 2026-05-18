@@ -2,6 +2,10 @@ import { WindLine } from '@/components/WindLine'
 import { GlassCard } from '@/components/GlassCard'
 import { TokenBadge } from '@/components/TokenBadge'
 
+export async function generateStaticParams() {
+  return [{ id: 'm-seed-1' }]
+}
+
 export default async function MarketDetailPage({
   params,
 }: {
