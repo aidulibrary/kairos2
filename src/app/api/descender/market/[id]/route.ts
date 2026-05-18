@@ -2,6 +2,10 @@ export const dynamic = "force-static"
 import { NextResponse } from 'next/server'
 import prisma from '@/lib/db'
 
+export async function generateStaticParams() {
+  return [{ id: 'm-seed-1' }]
+}
+
 export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const { id } = await params
