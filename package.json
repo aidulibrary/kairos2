@@ -6,10 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "pages:preview": "npx @cloudflare/next-on-pages preview",
-    "pages:deploy": "npx @cloudflare/next-on-pages && npx wrangler pages deploy .vercel/output/static"
+    "lint": "eslint"
   },
   "dependencies": {
     "@ai-sdk/deepseek": "^1",
@@ -28,7 +25,6 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -37,7 +33,6 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
     "tailwindcss": "^4",
-    "typescript": "^5",
-    "wrangler": "^4"
+    "typescript": "^5"
   }
 }
