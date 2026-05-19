@@ -176,8 +176,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       // 5. Finish
       enqueue({ type: 'finish' })
 
-      // 6. DONE
-      enqueue('[DONE]')
+      // 6. DONE — must be raw SSE token, NOT JSON-stringified
+      controller.enqueue(encoder.encode('data: [DONE]\n\n'))
 
       controller.close()
     },
