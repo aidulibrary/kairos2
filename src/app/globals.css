@@ -32,3 +32,64 @@ body {
   scrollbar-width: thin;
   scrollbar-color: var(--kairo-between) transparent;
 }
+
+/* ─── KAIROS 动效系统 ─── */
+
+@keyframes kairos-approach {
+  0% { opacity: 0; filter: blur(12px); transform: scale(0.96); }
+  100% { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+@keyframes kairos-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes kairos-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes kairos-reveal {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes kairos-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(232, 185, 74, 0.15); }
+  50% { box-shadow: 0 0 24px rgba(232, 185, 74, 0.3); }
+}
+
+/* 市集卡片入场延迟 */
+.kairos-card-enter {
+  animation: kairos-reveal 0.6s ease-out both;
+}
+.kairos-card-enter:nth-child(1) { animation-delay: 0.05s; }
+.kairos-card-enter:nth-child(2) { animation-delay: 0.1s; }
+.kairos-card-enter:nth-child(3) { animation-delay: 0.15s; }
+.kairos-card-enter:nth-child(4) { animation-delay: 0.2s; }
+
+/* 信物分数字呼吸 */
+.kairos-score-pulse {
+  animation: kairos-pulse 3s ease-in-out infinite;
+}
+
+/* 毛玻璃悬停增强 */
+.kairos-glass-hover {
+  transition: all 0.3s ease;
+}
+.kairos-glass-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 按钮光泽扫过 */
+@keyframes kairos-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.kairos-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(232, 185, 74, 0.1) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: kairos-shimmer 3s ease-in-out infinite;
+}
