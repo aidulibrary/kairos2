@@ -6,7 +6,7 @@ import db from '@/lib/db'
 import type { Vendor } from '@/lib/data'
 
 export default async function ArriverPage() {
-  const vendor = (await db.findMany('vendor', {
+  const vendor = (await db.vendor.findMany({
     where: {},
     include: { user: true, booths: { include: { market: true } } },
     take: 1,

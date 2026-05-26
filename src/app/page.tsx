@@ -42,14 +42,14 @@ function PostCard({ post, accent }: { post: PlazaPost; accent: string }) {
 
 // ─── Plaza Page ───────────────────────────────────
 export default async function PlazaPage() {
-  const posts = await db.findMany('plazaPost', { include: { user: true }, orderBy: { createdAt: 'desc' } }) as unknown as PlazaPost[]
+  const posts = await db.plazaPost.findMany({ include: { user: true }, orderBy: { createdAt: 'desc' } }) as unknown as PlazaPost[]
 
   const windPosts  = posts.filter((p: PlazaPost) => p.type === 'WIND')
   const lanternPosts = posts.filter((p: PlazaPost) => p.type === 'LANTERN')
   const forumPosts  = posts.filter((p: PlazaPost) => p.type === 'FORUM')
   const memoirPosts = posts.filter((p: PlazaPost) => p.type === 'MEMOIR')
 
-  const markets = await db.findMany('market', { orderBy: { createdAt: 'desc' } }) as unknown as Array<{ id: string; name: string; location: string; date: string; status: string; boothCount: number; creator?: { name: string } }>
+  const markets = await db.market.findMany({ orderBy: { createdAt: 'desc' } }) as unknown as Array<{ id: string; name: string; location: string; date: string; status: string; boothCount: number; creator?: { name: string } }>
   const hasMarkets = markets.length > 0
 
   return (

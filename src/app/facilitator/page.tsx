@@ -4,7 +4,7 @@ import db from '@/lib/db'
 import type { Service } from '@/lib/data'
 
 export default async function FacilitatorPage() {
-  const services = await db.findMany('service', {
+  const services = await db.service.findMany({
     include: { user: true },
   }) as unknown as Service[]
 

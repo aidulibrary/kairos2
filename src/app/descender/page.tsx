@@ -4,7 +4,7 @@ import db from '@/lib/db'
 import type { Market } from '@/lib/data'
 
 export default async function DescenderPage() {
-  const markets = await db.findMany('market', {
+  const markets = await db.market.findMany({
     where: { status: { in: ['published'] } },
     include: { creator: true },
     orderBy: { date: 'asc' },

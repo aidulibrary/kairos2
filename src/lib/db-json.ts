@@ -179,6 +179,13 @@ const db = {
   },
 
   service: {
+    findMany: async (args?: { where?: Obj; include?: Obj; orderBy?: Obj }) => {
+      let items = [...store.services] as unknown as Obj[]
+      if (args?.where) items = matchWhere(items, args.where)
+      if (args?.orderBy) items = applyOrderBy(items, args.orderBy)
+      if (args?.include) items = resolveInclude(items, args.include)
+      return clone(items)
+    },
     findUnique: async (args: { where: Obj }) => {
       const items = matchWhere(store.services as unknown as Obj[], args.where)
       return items.length > 0 ? clone(items[0]) : null
