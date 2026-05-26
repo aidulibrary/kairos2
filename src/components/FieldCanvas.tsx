@@ -37,21 +37,21 @@ export interface FieldCanvasProps {
 /* ── 颜色映射 ── */
 const STATUS_COLORS = {
   occupied: {
-    fill: 'rgba(232,185,74,0.08)',
-    stroke: 'rgba(232,185,74,0.6)',
-    text: '#e8b94a',
+    fill: 'rgba(232,185,74,0.15)',
+    stroke: 'rgba(232,185,74,0.9)',
+    text: '#f0c850',
     label: '已占据',
   },
   reserved: {
-    fill: 'rgba(94,194,162,0.08)',
-    stroke: 'rgba(94,194,162,0.5)',
+    fill: 'rgba(94,194,162,0.15)',
+    stroke: 'rgba(94,194,162,0.8)',
     text: '#5ec2a2',
     label: '已预留',
   },
   available: {
-    fill: 'rgba(255,255,255,0.03)',
-    stroke: 'rgba(255,255,255,0.12)',
-    text: 'rgba(255,255,255,0.35)',
+    fill: 'rgba(255,255,255,0.06)',
+    stroke: 'rgba(255,255,255,0.25)',
+    text: 'rgba(255,255,255,0.55)',
     label: '空位',
   },
 }
@@ -87,7 +87,7 @@ function BoothRect({
       <Rect
         width={data.width}
         height={data.height}
-        fill={hovered ? colors.fill.replace('0.08', '0.18').replace('0.03', '0.10') : colors.fill}
+        fill={hovered ? colors.fill.replace('0.15', '0.30').replace('0.06', '0.15') : colors.fill}
         stroke={hovered ? colors.text : colors.stroke}
         strokeWidth={hovered ? 2 : 1}
         cornerRadius={6}
@@ -147,13 +147,13 @@ function GridBackground({ w, h }: { w: number; h: number }) {
   // vertical
   for (let x = gap; x < w; x += gap) {
     lines.push(
-      <Line key={`v-${x}`} points={[x, 0, x, h]} stroke="rgba(255,255,255,0.04)" strokeWidth={0.5} />
+      <Line key={`v-${x}`} points={[x, 0, x, h]} stroke="rgba(255,255,255,0.1)" strokeWidth={0.5} />
     )
   }
   // horizontal
   for (let y = gap; y < h; y += gap) {
     lines.push(
-      <Line key={`h-${y}`} points={[0, y, w, y]} stroke="rgba(255,255,255,0.04)" strokeWidth={0.5} />
+      <Line key={`h-${y}`} points={[0, y, w, y]} stroke="rgba(255,255,255,0.1)" strokeWidth={0.5} />
     )
   }
   return <>{lines}</>
@@ -219,8 +219,8 @@ export default function FieldCanvas({
         ref={containerRef}
         className="w-full rounded-2xl overflow-hidden"
         style={{
-          background: 'rgba(7,7,8,0.9)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          background: '#161618',
+          border: '1px solid rgba(255,255,255,0.15)',
           minHeight: 400,
         }}
       >
